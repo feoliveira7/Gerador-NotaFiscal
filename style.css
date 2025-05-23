@@ -55,7 +55,7 @@ h1{
   @media print {
     body  { visibility: hidden; }
     #relatorio, #relatorio  {
-      visibility: visible;
+      visibility: hidden;
       position: static;
     }
   }
