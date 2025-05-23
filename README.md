@@ -5,5 +5,9 @@ Este projeto é uma ferramenta simples para geração de PDFs de notas fiscais, 
 
 https://feoliveira7.github.io/Gerador-NotaFiscal
 ```bash
-20/05/2025
+
+Utilização de:
+- Javascript
+- HTML
+- CSS
 
