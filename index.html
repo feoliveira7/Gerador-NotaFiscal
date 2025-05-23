@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>PetLove Distribuidora</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/logo.png">
+</head>
+<body>
+  <div class="geral">
+    <header>
+      <img class="logoHeader" src="images/Pet.png" alt="">
+    </header>
+  
+    <h1>Preencher nota de pedido</h1>
+    <p class="labelCliente">Nome do cliente:</p>
+    <input type="text" id="solicitante" placeholder="Nome do cliente" required>
+  
+    <div class="enderecoDiv">
+      <p class="labelCliente">Endereço:</p>
+      <input type="text" id="endereco1" placeholder="Endereço" required>
+      <input type="text" id="endereco2" placeholder="Bairro" required>
+      <div class="quebraLinha">
+        <input type="number" id="endereco3" placeholder="Número" required>
+        <input type="text" id="endereco4" placeholder="Complemento" required>
+      </div>
+  
+    </div>
+  
+    <h1>Produtos</h1>
+    <div class="campoContainer">
+      <div class="campo">
+  
+        <p class="labelCliente">Rações para cachorros:</p>
+        <select id="c1">
+          <option value="" disabled selected hidden>Selecione uma opção</option>
+          <option value="PEDIGREE Ração Nutrição Essencial">PEDIGREE Ração Nutrição Essencial - 10kg - R$124,99</option>
+          <option value="Ração GranPlus Choice Frango e Carne">Ração GranPlus Choice Frango e Carne - 10.1kg - R$109,90 </option>
+          <option value="Ração Golden Formula Frango e Arroz">Ração Golden Formula Frango e Arroz - 15KG - R$199,80</option>
+        </select>
+    
+        <select id="qntC1">
+          <option value="" disabled selected hidden>Qnt.</option>
+          
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+        </select>
+      </div>
+    
+      <div class="campo">
+        <p class="labelCliente">Rações para gatos:</p>
+        <select id="c2">
+          <option value="" disabled selected hidden>Selecione uma opção</option>
+          <option value="Ração Golden Special Sabor Frango e Carne">Ração Golden Special Sabor Frango e Carne - 10.1kg - R$144,14</option>
+          <option value="Ração GranPlus Choice Sabor Frango e Carne">Ração GranPlus Choice Sabor Frango e Carne - 10.1kg - R$125,79</option>
+          <option value="Whiskas Para Gatos Adultos Castrados Sabor Carne">Whiskas Para Gatos Adultos Sabor Peixe - 10.1kg - R$179,99</option>
+    
+        </select>
+    
+        <select id="qntC2">
+          <option value="" disabled selected hidden>Qnt.</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+        </select>
+      </div>
+    
+    
+    
+      <div class="campo">
+        <p class="labelCliente">Forma de pagamento:</p>
+        <select id="c3">
+          <option value="" disabled selected hidden>Selecione a forma de pagamento</option>
+          <option value="Cartão de Crédito">Cartão de Crédito</option>
+          <option value="Boleto Bancário">Boleto Bancário</option>
+          <option value="Pix">Pix</option>
+        </select>
+      </div>
+    </div>
+  
+    <p class="labelCliente">Observações:</p>
+    <input type="text" id="observacoes" placeholder="Observações">
+    
+    <div class="buttons">
+      <button class="buttonRelatorio" onclick="gerar()">Gerar Relatório</button>
+      <button class="buttonRelatorio" onclick="gerar(true)">Gerar PDF</button>
+      <button class="buttonRelatorio" onclick="gerar(false, true)">Imprimir</button>
+    </div>
+  </div>
+  
+
+
+  <div id="relatorio">
+    <div class="headerRelatorio">
+      <div class="logoDiv">
+
+        <img src="images/Pet.png" class="logo" alt="">
+        <p class="nameLoja">PetLove - Distribuidora e Atacado de produtos para animais</p>
+
+
+      </div>
+      <div class="codigoDiv">
+        <img class="codigoBarras" src="images/codigo-de-barras.png" alt="">
+      </div>
+    </div>
+    
+    <div class="mainRelatorio">
+    
+      <div class="produtosContainer">
+        <div class="linhaNomes">
+          <p id="cliente">Solicitante:</p>
+          <p id="data">Data de emissão:</p>
+        </div>
+        <p id="endereco">Endereço:</p>
+        <p id="vazio"></p>
+
+        <div class="headerTabelaProdutos">
+          <p id="tabelaQnt">Qnt.</p>
+          <p id="tabelaQnt2">Produto</p>
+          <p id="tabelaQnt3">Valor unit.</p>
+          <p id="tabelaQnt4">Valor Total</p>
+        </div>
+
+        <div class="linhaPedido1">
+          <p class="pedido1cat1" id="pedido1cat1"></p>
+          <p class="pedido1cat2" id="pedido1cat2"></p>
+          <p class="pedido1cat3" id="pedido1cat3"></p>
+          <p class="pedido1cat4" id="pedido1cat4"></p>
+        </div>
+
+        <div class="linhaPedido1">
+          <p class="pedido1cat1" id="pedido2cat1"></p>
+          <p class="pedido1cat2" id="pedido2cat2"></p>
+          <p class="pedido1cat3" id="pedido2cat3"></p>
+          <p class="pedido1cat4" id="pedido2cat4"></p>
+        </div>
+
+        <div class="linhaPedido1">
+          <p class="vaziopedido1"></p>
+          <p class="vaziopedido2"></p>
+          <p class="vaziopedido3"></p>
+          <p class="vaziopedido4"></p>
+        </div>
+
+        <div class="linhaPedido1">
+          <p class="vaziopedido1"></p>
+          <p class="vaziopedido2"></p>
+          <p class="vaziopedido3"></p>
+          <p class="vaziopedido4"></p>
+        </div>
+        
+        <div class="linhaPedido1">
+          <p class="vaziopedido1"></p>
+          <p class="vaziopedido2"></p>
+          <p class="vaziopedido3"></p>
+          <p class="vaziopedido4"></p>
+        </div>
+
+        <div class="linhaPedido1">
+          <p class="totalCompra">Valor Total:</p>
+          <p class="totalCompra2" id="totalCompra"></p>
+        </div>
+
+
+        <div class="containerGeral">
+
+          <p id="obsBox">
+            Observações:
+          </p>
+  
+          <div class="assinaturasBox">
+            
+            <div class="assinatura1">
+              <p class="assinatura"></p>
+              <p>Assinatura do Solicitante</p>
+            </div>
+
+            <div class="assinatura1">
+              <p class="assinatura"></p>
+              <p>Assinatura do Aprovador</p>
+            </div>
+
+          </div>
+          
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
