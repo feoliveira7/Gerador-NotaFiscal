@@ -44,7 +44,7 @@ h1{
 }
 
 #relatorio {
-    /* visibility: hidden; */
+    visibility: hidden;
 
     width: 90%;
     max-width: 900px;
@@ -55,7 +55,7 @@ h1{
   @media print {
     body  { visibility: hidden; }
     #relatorio, #relatorio  {
-      visibility: hidden;
+      visibility: visible;
       position: static;
     }
   }
